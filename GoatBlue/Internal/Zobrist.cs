@@ -5,12 +5,18 @@ namespace GoatBlue.Internal;
 
 public class Zobrist
 {
+    static Zobrist currentTable = new Zobrist(2, -1);
+    public static Zobrist Table => currentTable;
+
+    public static void Reset(int players, int seed = -1)
+        => currentTable = new Zobrist(players, seed);
+
     const int pieces = 5;
     const int squares = 47;
     const int playerFactor = pieces * squares;
     readonly ulong[] table;
 
-    public Zobrist(int players, int seed = -1)
+    Zobrist(int players, int seed)
     {
         table = new ulong[players * pieces * squares];
         if (seed == -1)
