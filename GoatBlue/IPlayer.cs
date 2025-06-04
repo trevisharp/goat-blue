@@ -8,6 +8,11 @@ namespace GoatBlue;
 public interface IPlayer
 {
     /// <summary>
+    /// Represents a idenitification for the player.
+    /// </summary>
+    byte Id { get; }
+
+    /// <summary>
     /// Get if this entity is a stochastic entity.
     /// </summary>
     bool IsStochastic { get; }
