@@ -1,11 +1,22 @@
 namespace GoatBlue;
 
+/// <summary>
+/// A engine that plays the best move of
+/// a game based on a State, Player and Move type.
+/// </summary>
 public interface IEngine<S, M, P>
-    where P : IPlayer
-    where M : IMove<P>
     where S : IState<M, P>
+    where M : IMove
+    where P : IPlayer
 {
-    float DeepEvaluate(S state, P player);
+    /// <summary>
+    /// Avaliate a state using a tree approuch
+    /// for a deep analisys.
+    /// </summary>
+    float DeepEvaluate(S state);
 
-    M PickBest(S state, P player);
+    /// <summary>
+    /// Pick the best move for current player. 
+    /// </summary>
+    M PickBest(S state);
 }

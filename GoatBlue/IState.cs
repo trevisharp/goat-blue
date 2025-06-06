@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace GoatBlue;
 
 /// <summary>
@@ -8,8 +10,13 @@ namespace GoatBlue;
 /// </summary>
 public interface IState<M, P>
     where P : IPlayer
-    where M : IMove<P>
+    where M : IMove
 {
+    /// <summary>
+    /// Get the entity that can move in this state.
+    /// </summary>
+    P Player { get; }
+
     /// <summary>
     /// Do a move.
     /// </summary>
@@ -27,7 +34,12 @@ public interface IState<M, P>
 
     /// <summary>
     /// Evaluate the probability for the
-    /// player P win the game.
+    /// current player win the game.
     /// </summary>
-    float Evaluate(P player);
+    float Evaluate();
+    
+    /// <summary>
+    /// Get a enumerator of all avaliable moves.
+    /// </summary>
+    IEnumerable<IMove> GetMoves();
 }
