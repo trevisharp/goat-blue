@@ -3,9 +3,9 @@ using System;
 namespace GoatBlue.Engines;
 
 /// <summary>
-/// A Engine that applies MiniMax algorithm.
+/// A Engine that applies MiniMax algorithm for two players.
 /// </summary>
-public class MiniMaxEngine<S, M> : IEngine<S, M>
+public class DuelMiniMaxEngine<S, M> : IEngine<S, M>
     where S : IState<M>
 {
     public int Depth { get; set; } = 4;
