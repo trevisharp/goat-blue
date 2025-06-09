@@ -5,10 +5,8 @@ namespace GoatBlue.Engines;
 /// <summary>
 /// A Engine that applies MiniMax algorithm.
 /// </summary>
-public class MiniMaxEngine<S, M, P> : IEngine<S, M, P>
-    where S : IState<M, P>
-    where M : IMove
-    where P : IPlayer
+public class MiniMaxEngine<S, M> : IEngine<S, M>
+    where S : IState<M>
 {
     public int Depth { get; set; } = 4;
 

@@ -4,18 +4,19 @@ namespace GoatBlue;
 
 /// <summary>
 /// A interface for all game state that is
-/// associated with a type for represents
-/// a move and a type for represents a
-/// player.
+/// associated with a type for represents a move.
 /// </summary>
-public interface IState<M, P>
-    where P : IPlayer
-    where M : IMove
+public interface IState<M>
 {
     /// <summary>
-    /// Get the entity that can move in this state.
+    /// Get the id of the current player.
     /// </summary>
-    P Player { get; }
+    byte GetCurrentPlayer();
+
+    /// <summary>
+    /// Get if this state is a stochastic state.
+    /// </summary>
+    bool IsStochastic();
 
     /// <summary>
     /// Do a move.
@@ -30,7 +31,7 @@ public interface IState<M, P>
     /// <summary>
     /// Create a copy from this state.
     /// </summary>
-    IState<M, P> Copy();
+    IState<M> Copy();
 
     /// <summary>
     /// Evaluate the probability for the
@@ -41,5 +42,5 @@ public interface IState<M, P>
     /// <summary>
     /// Get a enumerator of all avaliable moves.
     /// </summary>
-    IEnumerable<IMove> GetMoves();
+    IEnumerable<M> GetMoves();
 }

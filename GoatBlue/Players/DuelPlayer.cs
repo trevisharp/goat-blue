@@ -1,15 +1,10 @@
 namespace GoatBlue.Players;
 
 /// <summary>
-/// Represents a player for a two-game
-/// player.
+/// Represents a player of a game with two players.
 /// </summary>
-public readonly struct DuelPlayer(byte id) : IPlayer
+public enum DuelPlayer : byte
 {
-    public static readonly DuelPlayer One = new(1);
-    public static readonly DuelPlayer Two = new(2);
-
-    readonly byte id = id;
-    public byte Id => id;
-    public bool IsStochastic => false;
+    One = 1,
+    Two = 2
 }
